@@ -34,6 +34,12 @@ class GUI : JFrame(), ActionListener {
     private lateinit var southButton: JButton
     private lateinit var eastButton: JButton
 
+class Location (val name: String) {
+    var north: Location? = null
+    var west: Location? = null
+    var south: Location? = null
+    var east: Location? = null
+}
     /**
      * Create, build and run the UI
      */
@@ -51,7 +57,7 @@ class GUI : JFrame(), ActionListener {
      */
     private fun setupWindow() {
         title = "Ever Changing Maze Game"
-        contentPane.preferredSize = Dimension(300, 170)
+        contentPane.preferredSize = Dimension(600, 340)
         defaultCloseOperation = WindowConstants.EXIT_ON_CLOSE
         isResizable = false
         layout = null
@@ -68,30 +74,30 @@ class GUI : JFrame(), ActionListener {
         val baseFont = Font(Font.SANS_SERIF, Font.PLAIN, 20)
 
         exampleLabel = JLabel("Move to start...", SwingConstants.CENTER)
-        exampleLabel.bounds = Rectangle(30, 50, 240, 40)
+        exampleLabel.bounds = Rectangle(180, 130, 240, 40)
         exampleLabel.font = baseFont
         add(exampleLabel)
 
         northButton = JButton("North")
-        northButton.bounds = Rectangle(110,0,80,40)
+        northButton.bounds = Rectangle(260,0,80,40)
         northButton.font = baseFont
         northButton.addActionListener(this)
         add(northButton)
 
         westButton = JButton("West")
-        westButton.bounds = Rectangle(220,50,80,40)
+        westButton.bounds = Rectangle(500,130,80,40)
         westButton.font = baseFont
         westButton.addActionListener(this)
         add(westButton)
 
         southButton = JButton("South")
-        southButton.bounds = Rectangle(110,110,80,40)
+        southButton.bounds = Rectangle(260,290,80,40)
         southButton.font = baseFont
         southButton.addActionListener(this)
         add(southButton)
 
         eastButton = JButton("East")
-        eastButton.bounds = Rectangle(0,50,80,40)
+        eastButton.bounds = Rectangle(20,140,80,40)
         eastButton.font = baseFont
         eastButton.addActionListener(this)
         add(eastButton)
