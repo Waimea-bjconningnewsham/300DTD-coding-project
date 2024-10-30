@@ -20,12 +20,15 @@ import javax.swing.*
 
 
 //=============================================================================================
-
+class Location(val location: String)
 /**
  * GUI class
  * Defines the UI and responds to events
  */
 class GUI : JFrame(), ActionListener {
+
+    val locations = mutableListOf<Location>()
+    var currentLocationIdex: Int
 
     // Setup some properties to hold the UI elements
     private lateinit var exampleLabel: JLabel
@@ -34,12 +37,7 @@ class GUI : JFrame(), ActionListener {
     private lateinit var southButton: JButton
     private lateinit var eastButton: JButton
 
-class Location (val name: String) {
-    var north: Location? = null
-    var west: Location? = null
-    var south: Location? = null
-    var east: Location? = null
-}
+
     /**
      * Create, build and run the UI
      */
@@ -47,10 +45,24 @@ class Location (val name: String) {
         setupWindow()
         buildUI()
 
+
         // Show the app, centred on screen
         setLocationRelativeTo(null)
         isVisible = true
+
+        // Show first location
+        currentLocationIdex = 0
+        updateUI()
     }
+
+    fun setupData() {
+        locations.add(Location("Forest"))
+        locations.add(Location("Woods"))
+        locations.add(Location("Path"))
+        locations.add(Location("South of Path"))
+        locations.add(Location("North of Path"))
+    }
+
 
     /**
      * Configure the main window
@@ -66,10 +78,10 @@ class Location (val name: String) {
     }
 
 
-
     /**
      * Populate the UI
      */
+
     private fun buildUI() {
         val baseFont = Font(Font.SANS_SERIF, Font.PLAIN, 20)
 
@@ -103,6 +115,33 @@ class Location (val name: String) {
         add(eastButton)
     }
 
+    fun updateUI() {
+        val locationToShow = locations[currentLocationIdex]
+
+        exampleLabel.text = locationToShow.location
+
+        if (currentLocationIdex == locations.size - 1) {
+            northButton.isEnabled = false
+            southButton.isEnabled = false
+            eastButton.isEnabled = false
+            westButton.isEnabled = false
+        }
+        else {
+            northButton.isEnabled = true
+
+        }
+
+        if (currentLocationIdex == 0) {
+            northButton.isEnabled = false
+            southButton.isEnabled = false
+            eastButton.isEnabled = false
+            westButton.isEnabled = false
+        }
+        else{
+            northButton.isEnabled = true
+        }
+    }
+
     /**
      * Handle any UI events
      */
@@ -119,7 +158,8 @@ class Location (val name: String) {
      * An Example Action
      */
     private fun northAction() {
-        exampleLabel.text = "You went north"
+        currentLocationIdex++
+        updateUI()
     }
     private fun westAction() {
         exampleLabel.text = "You went west"
