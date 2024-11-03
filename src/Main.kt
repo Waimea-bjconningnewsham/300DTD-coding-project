@@ -84,9 +84,9 @@ class GUI : JFrame(), ActionListener {
         locations.add(Location("A hill", "A hill. Great....")) // 7
         locations.add(Location("On top the hill", "That- Huff- was a very- huff- big hill! Hey what's over there?")) // 8
         locations.add(Location("Looking down the hill", "Is that a stream?")) // 9
-        locations.add(Location("", "")) // 10
-        locations.add(Location("", "")) // 11
-        locations.add(Location("", "")) // 12
+        locations.add(Location("Steam", "The water looks cold. Should I cross?")) // 10
+        locations.add(Location("Along the stream", "That looks way too cold.")) // 11
+        locations.add(Location("A bridge", "Hey, a bridge.")) // 12
         locations.add(Location("", "")) // 13
         locations.add(Location("", "")) // 14
         locations.add(Location("", "")) // 15
@@ -141,14 +141,18 @@ class GUI : JFrame(), ActionListener {
         locations[8].link("W", 9)
         locations[9].link("E", 8)
 
+        // The Stream
         locations[9].link("N", 10)
         locations[10].link("S", 9)
 
+        // Walking along the stream
         locations[10].link("W", 11)
         locations[11].link("E", 10)
 
+        // Bridge
         locations[11].link("N", 12)
         locations[12].link("S", 11)
+
 
         locations[12].link("W", 13)
         locations[13].link("E", 12)
@@ -191,7 +195,7 @@ class GUI : JFrame(), ActionListener {
         locations[25].link("N", 26)
         locations[26].link("S", 25)
 
-
+    
     }
 
 
@@ -217,7 +221,7 @@ class GUI : JFrame(), ActionListener {
         val baseFont = Font(Font.SANS_SERIF, Font.PLAIN, 20)
 
         nameLabel = JLabel("Move to start...", SwingConstants.CENTER)
-        nameLabel.bounds = Rectangle(180, 130, 240, 40)
+        nameLabel.bounds = Rectangle(180, 30, 240, 40)
         nameLabel.font = baseFont
         add(nameLabel)
 
@@ -226,26 +230,26 @@ class GUI : JFrame(), ActionListener {
         descLabel.font = baseFont
         add(descLabel)
 
-        northButton = JButton("North")
-        northButton.bounds = Rectangle(260,0,80,40)
+        northButton = JButton("N")
+        northButton.bounds = Rectangle(70,170,40,40)
         northButton.font = baseFont
         northButton.addActionListener(this)
         add(northButton)
 
-        westButton = JButton("West")
-        westButton.bounds = Rectangle(20,140,80,40)
+        westButton = JButton("W")
+        westButton.bounds = Rectangle(15,220,40,40)
         westButton.font = baseFont
         westButton.addActionListener(this)
         add(westButton)
 
-        southButton = JButton("South")
-        southButton.bounds = Rectangle(260,290,80,40)
+        southButton = JButton("S")
+        southButton.bounds = Rectangle(70,275,40,40)
         southButton.font = baseFont
         southButton.addActionListener(this)
         add(southButton)
 
-        eastButton = JButton("East")
-        eastButton.bounds = Rectangle(500,130,80,40)
+        eastButton = JButton("E")
+        eastButton.bounds = Rectangle(125,220,40,40)
         eastButton.font = baseFont
         eastButton.addActionListener(this)
         add(eastButton)
