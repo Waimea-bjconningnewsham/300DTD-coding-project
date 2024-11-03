@@ -1,11 +1,11 @@
 /**
  * ------------------------------------------------------------------------
- * PROJECT NAME HERE
+ * Ever-Changing Maze
  * Level 2 programming project
  *
  * by Brianna Conning-Newsham
  *
- * I'm making an ever-changing maze, the maze will randomly generate.
+ * I'm making an ever-changing maze, the maze doesn't really change that's just the name of the land as the area keeps changing
  * ------------------------------------------------------------------------
  */
 
@@ -20,7 +20,7 @@ import javax.swing.*
 
 
 //=============================================================================================
-class Location(val name: String, val description: String) {
+class Location(val name: String, val description: String, val item: String? = null) {
     var north: Int = -1
     var east: Int = -1
     var south: Int = -1
@@ -33,6 +33,23 @@ class Location(val name: String, val description: String) {
         if (direction == "W") west = locationIndex
     }
 }
+
+class Inventory {
+    private val items = mutableListOf<String>()
+
+    fun addItem(item: String) {
+        if (item !in items) {
+            items.add(item)
+            println("You picked up: $item")
+        } else {
+            println("You already have: $item")
+        }
+    }
+
+    fun displayItems(): String {
+        return if (items.isEmpty()) "Inventory: Empty" else "Inventory: ${items.joinToString(", ")}"
+    }
+}
 /**
  * GUI class
  * Defines the UI and responds to events
@@ -41,10 +58,13 @@ class GUI : JFrame(), ActionListener {
 
     val locations = mutableListOf<Location>()
     var currentLocationIdex: Int
+    private val playerInventory = Inventory()
+
 
     // Setup some properties to hold the UI elements
     private lateinit var nameLabel: JLabel
     private lateinit var descLabel: JLabel
+    private lateinit var inventoryLabel: JLabel
 
     private lateinit var northButton: JButton
     private lateinit var westButton: JButton
@@ -96,7 +116,7 @@ class GUI : JFrame(), ActionListener {
         locations.add(Location("", "")) // 19
         locations.add(Location("", "")) // 20
         locations.add(Location("", "")) // 21
-        locations.add(Location("", "")) // 22
+        locations.add(Location("A traps been set off", "The way back has been cut off, I can't go back now. Hope there wasn't anything I needed over there.")) // 22
         locations.add(Location("", "")) // 23
         locations.add(Location("", "")) // 24
         locations.add(Location("", "")) // 25
@@ -226,9 +246,15 @@ class GUI : JFrame(), ActionListener {
         add(nameLabel)
 
         descLabel = JLabel("Move to start...", SwingConstants.CENTER)
-        descLabel.bounds = Rectangle(180, 200, 240, 100)
+        descLabel.bounds = Rectangle(180, 100, 240, 100)
         descLabel.font = baseFont
         add(descLabel)
+
+        // Add the inventory label
+        inventoryLabel = JLabel("Inventory: Empty", SwingConstants.CENTER)
+        inventoryLabel.bounds = Rectangle(180, 200, 240, 40)
+        inventoryLabel.font = baseFont
+        add(inventoryLabel)
 
         northButton = JButton("N")
         northButton.bounds = Rectangle(70,170,40,40)
@@ -260,6 +286,15 @@ class GUI : JFrame(), ActionListener {
 
         nameLabel.text = locationToShow.name
         descLabel.text = "<html>" + locationToShow.description
+
+        // Check for an item in the current location
+        locationToShow.item?.let {
+            playerInventory.addItem(it)  // Add item to inventory
+        }
+
+        // Update the inventory display
+        inventoryLabel.text = playerInventory.displayItems()
+
 
         if (locationToShow.north == -1) {
             northButton.isEnabled = false
