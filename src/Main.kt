@@ -108,12 +108,12 @@ class GUI : JFrame(), ActionListener {
         locations.add(Location("Along the stream", "That looks way too cold.")) // 11
         locations.add(Location("A bridge", "Hey, a bridge.")) // 12
         locations.add(Location("", "")) // 13
-        locations.add(Location("", "")) // 14
+        locations.add(Location("Go N here", "")) // 14
         locations.add(Location("", "")) // 15
         locations.add(Location("", "")) // 16
         locations.add(Location("", "")) // 17
         locations.add(Location("", "")) // 18
-        locations.add(Location("", "")) // 19
+        locations.add(Location("Split", "")) // 19
         locations.add(Location("", "")) // 20
         locations.add(Location("", "")) // 21
         locations.add(Location("A traps been set off", "The way back has been cut off, I can't go back now. Hope there wasn't anything I needed over there.")) // 22
@@ -123,7 +123,19 @@ class GUI : JFrame(), ActionListener {
         locations.add(Location("", "")) // 26
 
         // Maze part
-
+        locations.add(Location("Dead end", "")) // 27
+        locations.add(Location("", "")) // 28
+        locations.add(Location("Oop, You're dead", "You feel into a pit trap with spikes, try again.")) // 29
+        locations.add(Location("", "")) // 30
+        locations.add(Location("", "")) // 31
+        locations.add(Location("", "")) // 32
+        locations.add(Location("", "")) // 33
+        locations.add(Location("", "", "Key")) // 34
+        locations.add(Location("", "")) // 35
+        locations.add(Location("", "")) // 36
+        locations.add(Location("", "")) // 37
+        locations.add(Location("", "")) // 38
+        locations.add(Location("", "")) // 39
 
 
 
@@ -214,6 +226,38 @@ class GUI : JFrame(), ActionListener {
 
         locations[25].link("N", 26)
         locations[26].link("S", 25)
+
+        // Maze part
+        locations[19].link("W", 27)
+        locations[27].link("E", 19)
+
+        locations[8].link("E", 28)
+        locations[28].link("W", 8)
+
+        locations[8].link("E", 29)
+
+        locations[14].link("N", 30)
+        locations[30].link("S", 14)
+
+        locations[30].link("W", 31)
+        locations[31].link("E", 30)
+
+        locations[14].link("N", 32)
+        locations[32].link("S", 14)
+        locations[32].link("W", 33)
+        locations[33].link("E", 32)
+        locations[33].link("S", 34)
+        locations[34].link("N", 33)
+
+        locations[19].link("W", 34)
+
+        locations[16].link("S", 35)
+        locations[35].link("N", 16)
+        locations[35].link("W", 36)
+        locations[36].link("E", 35)
+
+        locations[17].link("W", 37)
+        locations[37].link("E", 17)
 
     
     }

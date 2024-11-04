@@ -59,9 +59,9 @@ Like changing the words on the window to something else.
 EXPECTED OUTCOME DETAILED HERE
 
 
-### TEST NAME HERE
+### Testing Inventory
 
-TEST DESCRIPTION HERE
+Adding and testing if the inventory I added works
 
 #### Test Data / Actions to Use
 
