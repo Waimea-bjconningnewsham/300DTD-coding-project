@@ -94,11 +94,11 @@ class GUI : JFrame(), ActionListener {
     private fun setupData() {
 
         // The Path to the door
-        locations.add(Location("Forest", "It is dark and gloomy"))           // 0
-        locations.add(Location("Woods","The trees are large and lean in"))   // 1
+        locations.add(Location("Forest", "It is dark and gloomy. Push the buttons at the bottom lift side of the screen."))           // 0
+        locations.add(Location("Woods","The trees are large and lean in. N = North, E = East, S = South, and W = West."))   // 1
         locations.add(Location("Path","A well worn path lays in the middle of the woods. Where does it go?"))             // 2
-        locations.add(Location("Up the path","Nothing here"))    // 3
-        locations.add(Location("More Path", "The path goes on. Does it stop?")) // 4
+        locations.add(Location("Up the path","Nothing here. Some paths you can't go back on, so chose your path carefully."))    // 3
+        locations.add(Location("More Path", "The path goes on. Does it stop? Make sure you find the key hidden in the maze, or you won't be able to get out.")) // 4
         locations.add(Location("A split","The path splits. Which way should I go?")) // 5
         locations.add(Location("A dark room", "A dark room? Why is this here? And where did it come from?")) // 6
         locations.add(Location("A hill", "A hill. Great....")) // 7
@@ -107,8 +107,8 @@ class GUI : JFrame(), ActionListener {
         locations.add(Location("Steam", "The water looks cold. Should I cross?")) // 10
         locations.add(Location("Along the stream", "That looks way too cold.")) // 11
         locations.add(Location("A bridge", "Hey, a bridge.")) // 12
-        locations.add(Location("", "")) // 13
-        locations.add(Location("Go N here", "")) // 14
+        locations.add(Location("A field of flowers", "AHH, Pollen!")) // 13
+        locations.add(Location("A big tree.", "That's a big tree.")) // 14
         locations.add(Location("", "")) // 15
         locations.add(Location("", "")) // 16
         locations.add(Location("", "")) // 17
@@ -124,13 +124,13 @@ class GUI : JFrame(), ActionListener {
 
         // Maze part
         locations.add(Location("Dead end", "")) // 27
-        locations.add(Location("", "")) // 28
+        locations.add(Location("Dead end", "")) // 28
         locations.add(Location("Oop, You're dead", "You feel into a pit trap with spikes, try again.")) // 29
-        locations.add(Location("", "")) // 30
-        locations.add(Location("", "")) // 31
-        locations.add(Location("", "")) // 32
-        locations.add(Location("", "")) // 33
-        locations.add(Location("", "", "Key")) // 34
+        locations.add(Location("Dead end", "")) // 30
+        locations.add(Location("Dead end", "")) // 31
+        locations.add(Location("A tunnel", "A really dark and spooky tunnel. Looks hunted.")) // 32
+        locations.add(Location("Really dark", "I can not see.")) // 33
+        locations.add(Location("A chest", "Oh, a chest. Hey, there's a key inside, wonder where it goes?", "Key")) // 34
         locations.add(Location("", "")) // 35
         locations.add(Location("", "")) // 36
         locations.add(Location("", "")) // 37
