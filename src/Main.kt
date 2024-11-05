@@ -20,7 +20,7 @@ import javax.swing.*
 
 
 //=============================================================================================
-class Location(val name: String, val description: String, val item: String? = null) {
+class Location(val name: String, val description: String, val item: String? = null, val isEnd:Boolean = false) {
     var north: Int = -1
     var east: Int = -1
     var south: Int = -1
@@ -46,6 +46,10 @@ class Inventory {
         }
     }
 
+    fun countItems(): Int {
+        return items.size
+    }
+
     fun displayItems(): String {
         return if (items.isEmpty()) "Inventory: Empty" else "Inventory: ${items.joinToString(", ")}"
     }
@@ -57,7 +61,7 @@ class Inventory {
 class GUI : JFrame(), ActionListener {
 
     val locations = mutableListOf<Location>()
-    var currentLocationIdex: Int
+    var currentLocationIndex: Int
     private val playerInventory = Inventory()
 
 
@@ -86,7 +90,7 @@ class GUI : JFrame(), ActionListener {
         isVisible = true
 
         // Show first location
-        currentLocationIdex = 0
+        currentLocationIndex = 0
         updateUI()
 
     }
@@ -94,9 +98,9 @@ class GUI : JFrame(), ActionListener {
     private fun setupData() {
 
         // The Path to the door
-        locations.add(Location("Forest", "It is dark and gloomy. Push the buttons at the bottom lift side of the screen."))           // 0
-        locations.add(Location("Woods","The trees are large and lean in. N = North, E = East, S = South, and W = West."))   // 1
-        locations.add(Location("Path","A well worn path lays in the middle of the woods. Where does it go?"))             // 2
+        locations.add(Location("Forest", "It is dark and gloomy. Push the buttons at the bottom left side of the screen."))           // 0
+        locations.add(Location("Woods","The trees are large and lean in. N = North, E = East, S = South, and W = West.", "Map"))   // 1
+        locations.add(Location("Path","A well worn path lays in the middle of the woods. Where does it go? You're goal is to get out, to get to the portal that can take you home."))             // 2
         locations.add(Location("Up the path","Nothing here. Some paths you can't go back on, so chose your path carefully."))    // 3
         locations.add(Location("More Path", "The path goes on. Does it stop? Make sure you find the key hidden in the maze, or you won't be able to get out.")) // 4
         locations.add(Location("A split","The path splits. Which way should I go?")) // 5
@@ -120,7 +124,7 @@ class GUI : JFrame(), ActionListener {
         locations.add(Location("", "")) // 23
         locations.add(Location("", "")) // 24
         locations.add(Location("", "")) // 25
-        locations.add(Location("", "")) // 26
+        locations.add(Location("The End", "", "", true)) // 26
 
         // Maze part
         locations.add(Location("Dead end", "")) // 27
@@ -326,10 +330,7 @@ class GUI : JFrame(), ActionListener {
     }
 
     fun updateUI() {
-        val locationToShow = locations[currentLocationIdex]
-
-        nameLabel.text = locationToShow.name
-        descLabel.text = "<html>" + locationToShow.description
+        val locationToShow = locations[currentLocationIndex]
 
         // Check for an item in the current location
         locationToShow.item?.let {
@@ -337,8 +338,24 @@ class GUI : JFrame(), ActionListener {
         }
 
         // Update the inventory display
-        inventoryLabel.text = playerInventory.displayItems()
+        inventoryLabel.text = "<html>" + playerInventory.displayItems()
 
+        nameLabel.text = locationToShow.name
+
+        // Check if we are at the end of the maze
+        if (locationToShow.isEnd == true) {
+            // Yes, at the end. Have we collected everything?
+            if (playerInventory.countItems() == 4) {
+                descLabel.text = "<html>Congratulations! You have found the exit and you collected all the items you needed."
+            }
+            else {
+                descLabel.text = "<html>You have reached the end, but... There are still some items you need to find :-("
+            }
+        }
+        else {
+            // Not the end, so show the normal description
+            descLabel.text = "<html>" + locationToShow.description
+        }
 
         if (locationToShow.north == -1) {
             northButton.isEnabled = false
@@ -385,19 +402,19 @@ class GUI : JFrame(), ActionListener {
      * An Example Action
      */
     private fun northAction() {
-        currentLocationIdex = locations[currentLocationIdex].north
+        currentLocationIndex = locations[currentLocationIndex].north
         updateUI()
     }
     private fun westAction() {
-        currentLocationIdex = locations[currentLocationIdex].west
+        currentLocationIndex = locations[currentLocationIndex].west
         updateUI()
     }
     private fun southAction() {
-        currentLocationIdex = locations[currentLocationIdex].south
+        currentLocationIndex = locations[currentLocationIndex].south
         updateUI()
     }
     private fun eastAction() {
-        currentLocationIdex = locations[currentLocationIdex].east
+        currentLocationIndex = locations[currentLocationIndex].east
         updateUI()
     }
 }
