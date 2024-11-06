@@ -99,12 +99,12 @@ class GUI : JFrame(), ActionListener {
 
         // The Path to the door
         locations.add(Location("Forest", "It is dark and gloomy. Push the buttons at the bottom left side of the screen."))           // 0
-        locations.add(Location("Woods","The trees are large and lean in. N = North, E = East, S = South, and W = West.", "Map"))   // 1
+        locations.add(Location("Woods","The trees are large and lean in. N = North, E = East, S = South, and W = West."))   // 1
         locations.add(Location("Path","A well worn path lays in the middle of the woods. Where does it go? You're goal is to get out, to get to the portal that can take you home."))             // 2
         locations.add(Location("Up the path","Nothing here. Some paths you can't go back on, so chose your path carefully."))    // 3
         locations.add(Location("More Path", "The path goes on. Does it stop? Make sure you find the key hidden in the maze, or you won't be able to get out.")) // 4
         locations.add(Location("A split","The path splits. Which way should I go?")) // 5
-        locations.add(Location("A dark room", "A dark room? Why is this here? And where did it come from?")) // 6
+        locations.add(Location("A dark room", "A dark room? Why is this here? And where did it come from? What's this? A gem?", "Saphire")) // 6
         locations.add(Location("A hill", "A hill. Great....")) // 7
         locations.add(Location("On top the hill", "That- Huff- was a very- huff- big hill! Hey what's over there?")) // 8
         locations.add(Location("Looking down the hill", "Is that a stream?")) // 9
@@ -113,17 +113,17 @@ class GUI : JFrame(), ActionListener {
         locations.add(Location("A bridge", "Hey, a bridge.")) // 12
         locations.add(Location("A field of flowers", "AHH, Pollen!")) // 13
         locations.add(Location("A big tree.", "That's a big tree.")) // 14
-        locations.add(Location("", "")) // 15
-        locations.add(Location("", "")) // 16
-        locations.add(Location("", "")) // 17
-        locations.add(Location("", "")) // 18
-        locations.add(Location("Split", "")) // 19
-        locations.add(Location("", "")) // 20
-        locations.add(Location("", "")) // 21
+        locations.add(Location("A second forest", "Another Forest that's big and dark. Kind of looks like a magic forest.")) // 15
+        locations.add(Location("Signs", "Two signs, ones points to the north saying this way while the other says Ruins")) // 16
+        locations.add(Location("More forest", "")) // 17
+        locations.add(Location("Building", "A building, should I go in?")) // 18
+        locations.add(Location("Entrence", "This building is like a mansion")) // 19
+        locations.add(Location("Hallway", "This hallway is really long")) // 20
+        locations.add(Location("Sus Door way", "This looks sus.")) // 21
         locations.add(Location("A traps been set off", "The way back has been cut off, I can't go back now. Hope there wasn't anything I needed over there.")) // 22
-        locations.add(Location("", "")) // 23
-        locations.add(Location("", "")) // 24
-        locations.add(Location("", "")) // 25
+        locations.add(Location("A hallway", "There's a hallway, one way has an exit sign, the other has a weird glow to it.")) // 23
+        locations.add(Location("I hear something", "A soft buzzing. The exit?")) // 24
+        locations.add(Location("A door", "The exit.")) // 25
         locations.add(Location("The End", "", "", true)) // 26
 
         // Maze part
@@ -135,11 +135,16 @@ class GUI : JFrame(), ActionListener {
         locations.add(Location("A tunnel", "A really dark and spooky tunnel. Looks hunted.")) // 32
         locations.add(Location("Really dark", "I can not see.")) // 33
         locations.add(Location("A chest", "Oh, a chest. Hey, there's a key inside, wonder where it goes?", "Key")) // 34
-        locations.add(Location("", "")) // 35
-        locations.add(Location("", "")) // 36
-        locations.add(Location("", "")) // 37
-        locations.add(Location("", "")) // 38
-        locations.add(Location("", "")) // 39
+        locations.add(Location("Ruins", "Some old ruins, looks pretty unstable, I shouldn't go over there.")) // 35
+        locations.add(Location("Inside the ruins", "Where's the fun in being safe :). Oh, this looks cool. A stone tablet, can't read it but still.", "Tablet")) // 36
+        locations.add(Location("Dead end", "")) // 37
+        locations.add(Location("Oop, You're dead", "You feel off a cliff.")) // 38
+        locations.add(Location("Oop, You're dead", "You feel into a bush of poison ivy and died to it.")) // 39
+        locations.add(Location("A cross the river", "Oh, that was cold, so very cold!")) // 40
+        locations.add(Location("Edge of a pit", "A pit, it's deep. I think I see something down there")) // 41
+        locations.add(Location("A chest", "A chest? *Opens chest* And it has a blank map in it. Okay.", "Blank Map")) // 42
+        locations.add(Location("Dead", "You fell down the pit and fell into a spike trap. Try again.")) // 43
+        locations.add(Location("A portal", "What happens when I go threw?")) // 44
 
 
 
@@ -254,14 +259,33 @@ class GUI : JFrame(), ActionListener {
         locations[34].link("N", 33)
 
         locations[19].link("W", 34)
+        locations[34].link("E", 19)
 
-        locations[16].link("S", 35)
-        locations[35].link("N", 16)
+        locations[16].link("N", 35)
+        locations[35].link("S", 16)
         locations[35].link("W", 36)
         locations[36].link("E", 35)
 
         locations[17].link("W", 37)
         locations[37].link("E", 17)
+
+        locations[13].link("S", 38)
+
+        locations[18].link("W", 39)
+        locations[39].link("E", 18)
+
+        locations[10].link("N", 40)
+        locations[40].link("S", 10)
+        locations[40].link("E", 41)
+        locations[41].link("W", 40)
+        locations[41].link("N", 42)
+        locations[42].link("S", 41)
+
+        locations[41].link("E", 43)
+
+        locations[23].link("N", 44)
+        locations[44].link("S", 23)
+        locations[44].link("W", 0)
 
     
     }

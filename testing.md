@@ -4,15 +4,15 @@
 
 The project involves the programming of a game.
 
-In the game the maze will be changing constently, if not every time it has been reset.
-In the Ever Changing Maze game, the maze will have one goal, get out.
-To do this the play must find the key that unlocks the door to the exit, the key and door will be placed randomly in the world.
+In the game the maze will be long and confusing.
+In the Ever-Changing Maze game, the maze will have one goal, get out.
+To do this the play must find the 4 keys that unlocks the door to the exit, the key and door will be placed at the end of the world.
 
 ### Game Features and Rules
 
 The game has the following features and/or rules:
 
-- The maze must change at lest when the game is reset
+- The maze must be confusing.
 - You must be able to move properly inside the maze.
 - The game must let you grab the key and use it.
 - The game must be usable
@@ -54,36 +54,6 @@ I was testing if the buttons would work and if I could place them in the correct
 I was testing if the button's would work as I intended them to work as, and to make sure that they did the thing they where programed to do.
 Like changing the words on the window to something else.
 
-#### Expected Outcome
-
-EXPECTED OUTCOME DETAILED HERE
-
-
-### Testing Inventory
-
-Adding and testing if the inventory I added works
-
-#### Test Data / Actions to Use
-
-TEST DATA TO USE DETAILED HERE
-
-#### Expected Outcome
-
-EXPECTED OUTCOME DETAILED HERE
-
-
-### TEST NAME HERE
-
-TEST DESCRIPTION HERE
-
-#### Test Data / Actions to Use
-
-TEST DATA TO USE DETAILED HERE
-
-#### Expected Outcome
-
-EXPECTED OUTCOME DETAILED HERE
-
 
 ---
 
@@ -97,31 +67,3 @@ ACTUAL RESULTS OF TESTING SHOWN HERE
 ![](images/placeholder.jpg)
 
 NOTES REGARDING THE RESULTS HERE
-
-
-### TEST NAME HERE
-
-ACTUAL RESULTS OF TESTING SHOWN HERE
-
-![](images/placeholder.jpg)
-
-NOTES REGARDING THE RESULTS HERE
-
-
-### TEST NAME HERE
-
-ACTUAL RESULTS OF TESTING SHOWN HERE
-
-![](images/placeholder.jpg)
-
-NOTES REGARDING THE RESULTS HERE
-
-
-### TEST NAME HERE
-
-ACTUAL RESULTS OF TESTING SHOWN HERE
-
-![](images/placeholder.jpg)
-
-NOTES REGARDING THE RESULTS HERE
-
