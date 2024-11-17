@@ -64,6 +64,6 @@ Like changing the words on the window to something else.
 
 ACTUAL RESULTS OF TESTING SHOWN HERE
 
-![](images/placeholder.jpg)
+![](C:\Users\Brianna\Ampps\www\300DTD\300DTD-coding-project\images\Recording-20241107_205142.webm)
 
 NOTES REGARDING THE RESULTS HERE
