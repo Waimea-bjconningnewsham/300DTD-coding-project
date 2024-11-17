@@ -25,9 +25,6 @@ The following game features / functionality and player actions will need to be t
 
 - Testing the function called Grid.
 - Testing if the buttons work and placing them.
-- FUNCTIONALITY / FEATURE / ACTION TO TEST
-- FUNCTIONALITY / FEATURE / ACTION TO TEST
-- FUNCTIONALITY / FEATURE / ACTION TO TEST
 
 The following tests will be run against the completed game. The tests should result in the expected outcomes shown.
 
